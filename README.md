@@ -58,7 +58,7 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 - [Daftar Isi](#daftar-isi)
 - [Walkthrough](#walkthrough)
     - [Misi 1](#-misi-1)
-        - [Soal 1](#-soal-1-misi-1)
+        - [Soal 1](#-soal-1)
         - [Soal 2](#-soal-2-misi-1)
         - [Soal 3](#-soal-3-misi-1)
         - [Soal 4](#-soal-4-misi-1)
@@ -74,3 +74,143 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
         - [Soal 8](#-soal-8-misi-2)
     - [Misi 3](#-misi-3)
         - [Soal 1](#-soal-1-misi-3)
+
+## Walkthrough
+
+### • Misi 1
+
+#### ‣ Soal 1
+
+<blockquote>
+	<ol>
+		<li>
+			<p align="justify">
+				Identifikasi Perangkat:
+
+- Narya: Berfungsi sebagai DNS Server.
+- Vilya: Berfungsi sebagai DHCP Server.
+- Web Servers: Palantir  dan IronHills.
+- Client (Pasukan):
+  - Khamul: 5 host (Target/Burnice).
+  - Cirdan: 20 host (Lycaon).
+  - Isildur: 30 host (Policeboo).
+  - Durin: 50 host (Caesar).
+  - Gilgalad: 100 host (Ellen).
+  - Elendil: 200 host (Jane).
+			</p>
+		</li>
+	</ol>
+</blockquote>
+
+
+### • Soal 2
+
+<blockquote>
+	<ol>
+		<li>
+			<p align="justify">
+				Setelah membagi alamat IP menggunakan VLSM (Prefix IP sesuai kelompok), gambarkan pohon subnet yang menunjukkan hierarki pembagian IP di jaringan Aliansi. Lingkari subnet yang akan dilewati.
+			</p>
+		</li>
+	</ol>
+</blockquote>
+
+
+### • Soal 3
+
+<blockquote>
+	<ol>
+		<li>
+			<p align="justify">
+				Buatlah konfigurasi rute untuk menghubungkan semua subnet dengan benar. Pastikan perangkat dapat saling terhubung.
+			</p>
+		</li>
+	</ol>
+</blockquote>
+
+
+
+### • Soal 4
+
+<blockquote>
+	<ol>
+		<li>
+			<p align="justify">
+				Konfigurasi Service → Dikerjakan setelah Misi 2 No. 1:
+        
+- Vilya sebagai DHCP Server agar perangkat dalam Khamul, Durin, Gilgalad, Elendil, Cirdan, dan Isildur menerima IP otomatis.
+- AnduinBanks, Rivendell, dan Minastir berfungsi sebagai DHCP Relay.
+- Narya sebagai DNS Server.
+- Palantir dan IronHills sebagai Web Server (Apache/Nginx).
+- Buat index.html berisikan : "Welcome to {hostname}".
+			</p>
+		</li>
+	</ol>
+</blockquote>
+
+
+---
+
+### • Misi 2
+
+### • Soal 1
+
+<blockquote>
+	<ol>
+		<li>
+			<p align="justify">
+				Agar jaringan aman, terapkan aturan firewall berikut. 
+
+  - Agar jaringan Aliansi bisa terhubung ke luar (Valinor/Internet), konfigurasi routing menggunakan iptables.
+    - Syarat: Kalian TIDAK DIPERBOLEHKAN menggunakan target MASQUERADE.
+			</p>
+		</li>
+	</ol>
+</blockquote>
+
+
+
+
+### • Soal 2
+
+<blockquote>
+	<ol>
+		<li>
+			<p align="justify">
+				Karena Vilya (DHCP) menyimpan data vital, pastikan tidak ada perangkat lain yang bisa melakukan PING ke Vilya. <br>
+  - Namun, Vilya tetap leluasa dapat mengakses/ping ke seluruh perangkat lain.
+			</p>
+		</li>
+	</ol>
+</blockquote>
+
+
+
+### • Soal 3
+
+<blockquote>
+	<ol>
+		<li>
+			<p align="justify">
+				Agar lokasi pasukan tidak bocor, hanya Vilya yang dapat mengakses Narya (DNS). <br>
+  - Gunakan nc (netcat) untuk memastikan akses port DNS (53) ini.
+  - [Hapus aturan ini setelah pengujian agar internet lancar untuk install paket]
+			</p>
+		</li>
+	</ol>
+</blockquote>
+
+
+### • Soal 4
+
+<blockquote>
+	<ol>
+		<li>
+			<p align="justify">
+				Aktivitas mencurigakan terdeteksi di IronHills. Berdasarkan dekrit Raja, IronHills hanya boleh diakses pada Akhir Pekan (Sabtu & Minggu). <br>
+  - Akses hanya diizinkan untuk Faksi Kurcaci & Pengkhianat (Durin & Khamul) serta Faksi Manusia (Elendil & Isildur).
+  - Karena hari ini adalah Rabu (Simulasikan waktu server), mereka harusnya tertolak. Gunakan curl untuk membuktikan blokir waktu ini.
+			</p>
+		</li>
+	</ol>
+</blockquote>
