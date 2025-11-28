@@ -78,6 +78,7 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 ## Walkthrough
 
 ### • Misi 1
+### Memetakan Medan Perang
 
 #### ‣ Soal 1
 
@@ -152,6 +153,7 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 ---
 
 ### • Misi 2
+### Menemukan Jejak Kegelapan (Security Rules)
 
 ### • Soal 1
 
