@@ -214,3 +214,38 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 		</li>
 	</ol>
 </blockquote>
+
+
+
+### • Soal 5
+
+<blockquote>
+	<ol>
+		<li>
+			<p align="justify">
+				Sembari menunggu, pasukan berlatih di server Palantir. Akses dibatasi berdasarkan ras: <br>
+	- Faksi Elf (Gilgalad & Cirdan): Boleh akses jam 07.00 - 15.00.
+	- Faksi Manusia (Elendil & Isildur): Boleh akses jam 17.00 - 23.00.
+	- Gunakan curl untuk memastikan akses sesuai jam.
+			</p>
+		</li>
+	</ol>
+</blockquote>
+
+
+
+
+### • Soal 6
+
+<blockquote>
+	<ol>
+		<li>
+			<p align="justify">
+				Pasukan Manusia (Elendil) diminta menguji keamanan Palantir. Lakukan simulasi port scan dengan nmap rentang port 1-100. <br>
+	- Web server harus memblokir scan port yang melebihi 15 port dalam waktu 20 detik. <br>
+	- Penyerang yang terblokir tidak dapat melakukan ping, nc, atau curl ke Palantir. <br>
+	- Catat log iptables dengan prefix "PORT_SCAN_DETECTED".
+			</p>
+		</li>
+	</ol>
+</blockquote>
