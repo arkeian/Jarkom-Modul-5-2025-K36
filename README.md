@@ -58,29 +58,29 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 - [Daftar Isi](#daftar-isi)
 - [Walkthrough](#walkthrough)
     - [Misi 1](#-misi-1)
-        - [Soal 1](#-soal-1)
-        - [Soal 2](#-soal-2-misi-1)
-        - [Soal 3](#-soal-3-misi-1)
-        - [Soal 4](#-soal-4-misi-1)
+        - [Soal 1 Misi 1](#-soal-1-misi-1)
+        - [Soal 2 Misi 1](#-soal-2-misi-1)
+        - [Soal 3 Misi 1](#-soal-3-misi-1)
+        - [Soal 4 Misi 1](#-soal-4-misi-1)
     - [Misi 2](#-misi-2)
-        - [Soal 1](#-soal-1-misi-2)
-        - [Soal 2](#-soal-2-misi-2)
-        - [Soal 3](#-soal-3-misi-2)
-        - [Soal 4](#-soal-4-misi-2)
-        - [Soal 5](#-soal-5-misi-2)
-        - [Soal 5](#-soal-5-misi-2)
-        - [Soal 6](#-soal-6-misi-2)
-        - [Soal 7](#-soal-7-misi-2)
-        - [Soal 8](#-soal-8-misi-2)
+        - [Soal 1 Misi 2](#-soal-1-misi-2)
+        - [Soal 2 Misi 2](#-soal-2-misi-2)
+        - [Soal 3 Misi 2](#-soal-3-misi-2)
+        - [Soal 4 Misi 2](#-soal-4-misi-2)
+        - [Soal 5 Misi 2](#-soal-5-misi-2)
+        - [Soal 5 Misi 2](#-soal-5-misi-2)
+        - [Soal 6 Misi 2](#-soal-6-misi-2)
+        - [Soal 7 Misi 2](#-soal-7-misi-2)
+        - [Soal 8 Misi 2](#-soal-8-misi-2)
     - [Misi 3](#-misi-3)
-        - [Soal 1](#-soal-1-misi-3)
+        - [Soal 1 Misi 3](#-soal-1-misi-3)
 
 ## Walkthrough
 
 ### • Misi 1
 ### Memetakan Medan Perang
 
-#### ‣ Soal 1
+#### ‣ Soal 1 Misi 1
 
 <blockquote>
 	<ol>
@@ -104,7 +104,7 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 </blockquote>
 
 
-### • Soal 2
+### • Soal 2 Misi 1
 
 <blockquote>
 	<ol>
@@ -117,7 +117,7 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 </blockquote>
 
 
-### • Soal 3
+### • Soal 3 Misi 1
 
 <blockquote>
 	<ol>
@@ -131,7 +131,7 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 
 
 
-### • Soal 4
+### • Soal 4 Misi 1
 
 <blockquote>
 	<ol>
@@ -155,7 +155,7 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 ### • Misi 2
 ### Menemukan Jejak Kegelapan (Security Rules)
 
-### • Soal 1
+### • Soal 1 Misi 2
 
 <blockquote>
 	<ol>
@@ -173,7 +173,7 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 
 
 
-### • Soal 2
+### • Soal 2 Misi 2
 
 <blockquote>
 	<ol>
@@ -188,14 +188,14 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 
 
 
-### • Soal 3
+### • Soal 3 Misi 2
 
 <blockquote>
 	<ol>
 		<li>
 			<p align="justify">
 				Agar lokasi pasukan tidak bocor, hanya Vilya yang dapat mengakses Narya (DNS). <br>
-  - Gunakan nc (netcat) untuk memastikan akses port DNS (53) ini.
+  - Gunakan nc (netcat) untuk memastikan akses port DNS (53) ini. <br>
   - [Hapus aturan ini setelah pengujian agar internet lancar untuk install paket]
 			</p>
 		</li>
@@ -203,15 +203,15 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 </blockquote>
 
 
-### • Soal 4
+### • Soal 4 Miai 2
 
 <blockquote>
 	<ol>
 		<li>
 			<p align="justify">
 				Aktivitas mencurigakan terdeteksi di IronHills. Berdasarkan dekrit Raja, IronHills hanya boleh diakses pada Akhir Pekan (Sabtu & Minggu). <br>
-  - Akses hanya diizinkan untuk Faksi Kurcaci & Pengkhianat (Durin & Khamul) serta Faksi Manusia (Elendil & Isildur).
-  - Karena hari ini adalah Rabu (Simulasikan waktu server), mereka harusnya tertolak. Gunakan curl untuk membuktikan blokir waktu ini.
+  - Akses hanya diizinkan untuk Faksi Kurcaci & Pengkhianat (Durin & Khamul) serta Faksi Manusia (Elendil & Isildur). <br>
+  - Karena hari ini adalah Rabu (Simulasikan waktu server), mereka harusnya tertolak. Gunakan curl untuk membuktikan blokir waktu ini. <br>
 			</p>
 		</li>
 	</ol>
@@ -219,15 +219,15 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 
 
 
-### • Soal 5
+### • Soal 5 Misi 2
 
 <blockquote>
 	<ol>
 		<li>
 			<p align="justify">
 				Sembari menunggu, pasukan berlatih di server Palantir. Akses dibatasi berdasarkan ras: <br>
-	- Faksi Elf (Gilgalad & Cirdan): Boleh akses jam 07.00 - 15.00.
-	- Faksi Manusia (Elendil & Isildur): Boleh akses jam 17.00 - 23.00.
+	- Faksi Elf (Gilgalad & Cirdan): Boleh akses jam 07.00 - 15.00. <br>
+	- Faksi Manusia (Elendil & Isildur): Boleh akses jam 17.00 - 23.00. <br>
 	- Gunakan curl untuk memastikan akses sesuai jam.
 			</p>
 		</li>
@@ -237,7 +237,7 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 
 
 
-### • Soal 6
+### • Soal 6 Misi 2
 
 <blockquote>
 	<ol>
@@ -251,3 +251,6 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 		</li>
 	</ol>
 </blockquote>
+
+
+
