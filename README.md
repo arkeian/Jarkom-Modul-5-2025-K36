@@ -1058,7 +1058,7 @@ ping google.com -c 5
 	<img src="img_modul5/image05.png" alt="el gugel" width="80%" height="80%">  
 </p>
 
-#### b. Soal 2 Misi 2
+#### b. Soal 2
 
 <blockquote>
 	<ol start="2">
@@ -1073,6 +1073,29 @@ ping google.com -c 5
 	</ol>
 </blockquote>
 
+<p align="justify"> &emsp; Untuk memenuhi ketentuan tersebut, kita perlu melakukan konfigurasi firewall pada node Vilya agar <code>ICMP echo-request</code> dari perangkat lain diblokir. Namun, trafik keluar (outbound) tetap harus diizinkan agar Vilya dapat mengakses seluruh node. Implementasi sebagai berikut: </p>
+
+1. Blok semua ping menuju Vilya (INPUT – ICMP echo-request):
+```sh
+iptables -A INPUT -p icmp --icmp-type echo-request -j DROP
+```
+
+2. Izinkan Vilya ping ke perangkat lain (OUTPUT):
+```sh
+iptables -A OUTPUT -p icmp --icmp-type echo-request -j ACCEPT
+```
+
+3. Uji coba dari perangkat lain (harus gagal):
+```sh
+ping 192.229.1.193 -c 5
+```
+<p align="center"> <img src="img/firewall/vilya_block_ping.png" width="70%"> </p>
+
+4. Uji coba ping dari Vilya ke node lain (harus berhasil):
+```sh
+ping 192.229.1.238 -c 5
+```
+<p align="center"> <img src="img/firewall/vilya_ping_ok.png" width="70%"> </p>
 #### c. Soal 3 Misi 2
 
 <blockquote>
@@ -1140,7 +1163,7 @@ iptables -F
 	<img src="img_modul5/image18.png" alt="el nayar" width="80%" height="80%">  
 </p>
 
-#### d. Soal 4 Misi 2
+#### d. Soal 4
 
 <blockquote>
 	<ol start="4">
@@ -1156,8 +1179,28 @@ iptables -F
 	</ol>
 </blockquote>
 
-#### e. Soal 5 Misi 2
+<p align="justify"> &emsp; Kita menggunakan modul <code>iptables -m time</code> untuk membatasi akses berdasarkan hari. Web server (port 80) akan menolak koneksi pada hari kerja. </p>
+• Konfigurasi pada IronHills:
 
+Izinkan akses weekend dari subnetwork faksi:
+```sh
+iptables -A INPUT -p tcp --dport 80 -s 192.229.1.128/26 -m time --weekdays Sat,Sun -j ACCEPT
+iptables -A INPUT -p tcp --dport 80 -s 192.229.1.192/29 -m time --weekdays Sat,Sun -j ACCEPT
+iptables -A INPUT -p tcp --dport 80 -s 192.229.0.0/24 -m time --weekdays Sat,Sun -j ACCEPT
+```
+
+Tolak semua akses port 80 di hari kerja:
+```sh
+iptables -A INPUT -p tcp --dport 80 -m time ! --weekdays Sat,Sun -j REJECT
+```
+• Pengujian dengan curl (dari Durin):
+```sh
+curl ironhills.K36.com
+```
+<p align="center"> <img src="img/firewall/ironhills_blocked.png" width="70%"> </p>
+
+
+#### e. Soal 5
 <blockquote>
 	<ol start="5">
 		<li>
@@ -1173,7 +1216,14 @@ iptables -F
 	</ol>
 </blockquote>
 
-#### f. Soal 6 Misi 2
+</blockquote> <p align="justify"> &emsp; Palantir adalah server latihan, sehingga aksesnya harus dibatasi sesuai jam. Kita menerapkan aturan time-based sesuai ketentuan masing-masing faksi. </p>
+
+```sh
+iptables -A INPUT -p tcp --dport 80 -s 192.229.1.121/25 -m time --timestart 07:00 --timestop 15:00 -j ACCEPT
+iptables -A INPUT -p tcp --dport 80 -s 192.229.0.0/24 -m time --timestart 17:00 --timestop 23:00 -j ACCEPT
+```
+
+#### f. Soal 6
 
 <blockquote>
 	<ol start="6">
@@ -1190,7 +1240,20 @@ iptables -F
 	</ol>
 </blockquote>
 
-#### g. Soal 7 Misi 2
+<li>Scan melebihi 15 port dalam 20 detik → diblokir otomatis</li> <li>IP penyerang diblokir dari ping, nc, curl</li> <li>Log dicatat dengan prefix <code>PORT_SCAN_DETECTED</code></li> </ul> </blockquote>
+• Aturan iptables:
+
+```sh
+iptables -N PORTSCAN
+iptables -A INPUT -p tcp --syn -m recent --name portscan --set
+iptables -A INPUT -p tcp --syn -m recent --name portscan --update --seconds 20 --hitcount 15 -j PORTSCAN
+
+iptables -A PORTSCAN -m limit --limit 1/min -j LOG --log-prefix "PORT_SCAN_DETECTED "
+iptables -A PORTSCAN -j DROP
+```
+
+
+#### g. Soal 7
 
 <blockquote>
 	<ol start="7">
@@ -1205,7 +1268,18 @@ iptables -F
 		</li>
 </blockquote>
 
-#### h. Soal 8 Misi 2
+<p align="justify"> Akses IronHills dibatasi maksimal <b>3 koneksi aktif per IP</b> untuk mencegah overload. Uji menggunakan <code>curl</code> atau <code>ab</code>. </p> </blockquote>
+
+Aturan:
+```sh
+iptables -A INPUT -p tcp --syn --dport 80 -m connlimit --connlimit-above 3 -j REJECT
+```
+• Pengujian:
+```sh
+ab -n 100 -c 10 http://ironhills.K36.com/
+```
+
+#### h. Soal 8
 
 <blockquote>
 	<ol start="8">
