@@ -84,19 +84,19 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 	<ol start="1">
 		<li>
 			<p align="justify">
-				Identifikasi Perangkat:
+				<b>Identifikasi Perangkat:</b>
 				<ul>
-					<li>Narya: Berfungsi sebagai DNS Server.</li>
-					<li>Vilya: Berfungsi sebagai DHCP Server.</li>
-					<li>Web Servers: Palantir  dan IronHills.</li>
-					<li>Client (Pasukan):</li>
+					<li><b>Narya:</b> Berfungsi sebagai DNS Server.</li>
+					<li><b>Vilya:</b> Berfungsi sebagai DHCP Server.</li>
+					<li><b>Web Servers:</b> <b>Palantir</b>  dan <b>IronHills</b>.</li>
+					<li><b>Client (Pasukan):</b></li>
 					<ul>
-						<li>Khamul: 5 host (Target/Burnice).</li>
-						<li>Cirdan: 20 host (Lycaon).</li>
-						<li>Isildur: 30 host (Policeboo).</li>
-						<li>Durin: 50 host (Caesar).</li>
-						<li>Gilgalad: 100 host (Ellen).</li>
-						<li>Elendil: 200 host (Jane).</li>
+						<li><b>Khamul:</b> 5 host (Target/Burnice).</li>
+						<li><b>Cirdan:</b> 20 host (Lycaon).</li>
+						<li><b>Isildur:</b> 30 host (Policeboo).</li>
+						<li><b>Durin:</b> 50 host (Caesar).</li>
+						<li><b>Gilgalad:</b> 100 host (Ellen).</li>
+						<li><b>Elendil:</b> 200 host (Jane).</li>
 					</ul>
 				</ul>
 			</p>
@@ -111,7 +111,7 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 	<ol start="2">
 		<li>
 			<p align="justify">
-				Setelah membagi alamat IP menggunakan VLSM (Prefix IP sesuai kelompok), gambarkan pohon subnet yang menunjukkan hierarki pembagian IP di jaringan Aliansi. Lingkari subnet yang akan dilewati.
+				Setelah membagi alamat IP menggunakan VLSM (Prefix IP sesuai kelompok), gambarkan <b>pohon subnet</b> yang menunjukkan hierarki pembagian IP di jaringan Aliansi. Lingkari subnet yang akan dilewati.
 			</p>
 		</li>
 	</ol>
@@ -136,12 +136,12 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 	<ol start="4">
 		<li>
 			<p align="justify">
-				Konfigurasi Service → Dikerjakan setelah Misi 2 No. 1:
+				<b>Konfigurasi Service → Dikerjakan setelah Misi 2 No. 1:</b>
 				<ul>
-					<li>Vilya sebagai DHCP Server agar perangkat dalam Khamul, Durin, Gilgalad, Elendil, Cirdan, dan Isildur menerima IP otomatis.</li>
-					<li>AnduinBanks, Rivendell, dan Minastir berfungsi sebagai DHCP Relay.</li>
-					<li>Narya sebagai DNS Server.</li>
-					<li>Palantir dan IronHills sebagai Web Server (Apache/Nginx).</li>
+					<li><b>Vilya</b> sebagai <b>DHCP Server</b> agar perangkat dalam Khamul, Durin, Gilgalad, Elendil, Cirdan, dan Isildur menerima IP otomatis.</li>
+					<li><b>AnduinBanks</b>, <b>Rivendell</b>, dan <b>Minastir</b> berfungsi sebagai <b>DHCP Relay</b>.</li>
+					<li><b>Narya</b> sebagai <b>DNS Server</b>.</li>
+					<li><b>Palantir</b> dan <b>IronHills</b> sebagai <b>Web Server (Apache/Nginx)</b>.</li>
 					<li>Buat index.html berisikan : "Welcome to {hostname}".</li>
 				</ul>
 			</p>
@@ -287,10 +287,10 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 	<ol start="1">
 		<li>
 			<p align="justify">
-				Penjara Barad-dûr: Mengetahui pengkhianatan Khamul, Aliansi mengambil langkah final: Blokir semua lalu lintas masuk dan keluar dari Khamul.
+				<b>Penjara Barad-dûr:</b> Mengetahui pengkhianatan Khamul, Aliansi mengambil langkah final: <b>Blokir semua lalu lintas masuk dan keluar dari Khamul</b>.
 				<ul>
-					<li>Gunakan nc dan ping untuk membuktikan Khamul terisolasi total.</li>
-					<li>Penting: Yang diblokir adalah Khamul (5 Host), BUKAN Durin (50 Host). Jangan sampai salah sasaran.</li>
+					<li>Gunakan <code>nc</code> dan <code>ping</code> untuk membuktikan Khamul terisolasi total.</li>
+					<li><b>Penting:</b> Yang diblokir adalah Khamul (5 Host), <b>BUKAN</b> Durin (50 Host). Jangan sampai salah sasaran.</li>
 				</ul>
 		</li>
 </blockquote>
