@@ -1013,7 +1013,7 @@ service nginx restart
 </blockquote>
 
 <p align="justify">
-&emsp; Untuk memastikan setiap node dapat terhubung ke <b>WAN</b> tanpa MASQUARADE, kita perlu melakukan konfigurasi terlebih dahulu pada node <b>Osgilath</b> dan menambahkan peraturan <code>iptables</code>:
+&emsp; Untuk memastikan setiap node dapat terhubung ke <b>WAN</b> tanpa MASQUARADE, maka kita perlu melakukan konfigurasi terlebih dahulu pada node <b>Osgilath</b> dan menambahkan peraturan <code>iptables</code>:
 </p>
 
 ```sh
@@ -1073,8 +1073,6 @@ ping google.com -c 5
 	</ol>
 </blockquote>
 
-
-
 #### c. Soal 3
 
 <blockquote>
@@ -1091,6 +1089,56 @@ ping google.com -c 5
 	</ol>
 </blockquote>
 
+<p align="justify">
+&emsp; Untuk memastikan tidak ada node yang dapat terhubung dengan <b>Narya</b> selain <b>Vilya</b>, maka kita perlu melakukan konfigurasi terlebih dahulu pada node <b>Narya</b> dan menambahkan peraturan <code>iptables</code>:
+</p>
+
+```sh
+iptables -A INPUT -p tcp -s 192.229.1.202 --dport 53 -j ACCEPT
+iptables -A INPUT -p udp -s 192.229.1.202 --dport 53 -j ACCEPT
+iptables -A INPUT -p tcp --dport 53 -j REJECT 
+iptables -A INPUT -p udp --dport 53 -j REJECT 
+```
+
+<p align="justify">
+&emsp; Di mana command di atas akan menerima semua <i>packet</i> TCP dan UDP yang berasal dari Vilya menuju Narya pada <i>port</i> 53, sedangkan akan menolak semua <i>packet</i> TCP dan UDP yang berasal selain dari Vilya menuju Narya pada <i>port</i> 53.
+</p>
+
+<p align="justify">
+&emsp; Setelah itu, kita perlu memverifikasi bahwasannya Narya benar-benar terisolasi dan semua <i>packet</i> yang datang ditolak kecuali berasal dari Vilya. Hal ini dapat kita lakukan dengan menggunakan command <code>nc</code> dari luar Narya:
+</p>
+
+```bash
+nc -v 192.229.1.203 53
+```
+
+<p align="justify">
+Menggunakan Vilya dan Isildur sebagai contoh:
+</p>
+
+<p align="center">
+	<img src="img_modul5/image16.png" alt="el narya" width="80%" height="80%">  
+</p>
+
+<p align="center">
+	<img src="img_modul5/image17.png" alt="el yaran" width="80%" height="80%">  
+</p>
+
+<p align="justify">
+&emsp; Terakhir, kita perlu menghapus konfigurasi <code>iptables</code> yang telah diterapkan pada Narya di atas agar proses komunikasi antar node dapat kembali berjalan dengan lancar. Hal ini dapat dilakukan dengan melakukan <i>flush</i> konfigurasi iptables pada Narya:
+</p>
+
+```sh
+iptables -F
+```
+
+<p align="justify">
+&emsp; Sekarang, semua node sudah dapat berkomunikasi kembali dengan Narya. Menggunakan Isildur sebagai contoh:
+</p>
+
+<p align="center">
+	<img src="img_modul5/image18.png" alt="el nayar" width="80%" height="80%">  
+</p>
 
 #### d. Soal 4
 
@@ -1187,7 +1235,7 @@ ping google.com -c 5
 </blockquote>
 
 <p align="justify">
-&emsp; Untuk memastikan tidak ada node yang dapat terhubung dengan <b>Khamul</b>, ita perlu melakukan konfigurasi terlebih dahulu pada node <b>Wilderland</b> dan menambahkan peraturan <code>iptables</code>:
+&emsp; Untuk memastikan tidak ada node yang dapat terhubung dengan <b>Khamul</b>, maka kita perlu melakukan konfigurasi terlebih dahulu pada node <b>Wilderland</b> dan menambahkan peraturan <code>iptables</code>:
 </p>
 
 ```sh
