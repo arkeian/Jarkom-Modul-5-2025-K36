@@ -208,7 +208,7 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 #### d. Soal 4
 
 <blockquote>
-	<ol>
+	<ol start="4">
 		<li>
 			<p align="justify">
 				Aktivitas mencurigakan terdeteksi di IronHills. Berdasarkan dekrit Raja, IronHills hanya boleh diakses pada Akhir Pekan (Sabtu & Minggu).
@@ -224,7 +224,7 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 #### e. Soal 5
 
 <blockquote>
-	<ol>
+	<ol start="5">
 		<li>
 			<p align="justify">
 				Sembari menunggu, pasukan berlatih di server Palantir. Akses dibatasi berdasarkan ras:
@@ -241,7 +241,7 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 #### f. Soal 6
 
 <blockquote>
-	<ol>
+	<ol start="6">
 		<li>
 			<p align="justify">
 				Pasukan Manusia (Elendil) diminta menguji keamanan Palantir. Lakukan simulasi port scan dengan nmap rentang port 1-100.
@@ -255,5 +255,32 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 	</ol>
 </blockquote>
 
+#### g. Soal 7
+
+<blockquote>
+	<ol start="7">
+		<li>
+			<p align="justify">
+				Hari Sabtu tiba. Akses ke IronHills dibatasi untuk mencegah overload.
+				<ul>
+					<li>Akses ke IronHills hanya boleh berasal dari 3 koneksi aktif per IP dalam waktu bersamaan.</li>
+					<li>Lakukan uji coba beban (stress test) menggunakan curl atau ab.</li>
+				</ul>
+			</p>
+		</li>
+</blockquote>
+
+#### h. Soal 8
+
+<blockquote>
+	<ol start="8">
+		<li>
+			<p align="justify">
+				Selama uji coba, terdeteksi anomali. Setiap paket yang dikirim Vilya menuju Khamul, ternyata dibelokkan oleh sihir hitam menuju IronHills.
+				<ul>
+					<li>Gunakan nc untuk memastikan alur pengalihan ini (Redirect trafik dari Client ke Server).</li>
+				</ul>
+		</li>
+</blockquote>
 
 
