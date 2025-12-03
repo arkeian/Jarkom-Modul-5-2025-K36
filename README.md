@@ -1,23 +1,23 @@
-# Laporan Jarkom Modul 4 Kelompok K-36
+# Laporan Jarkom Modul 5 Kelompok K-36
 
 ## Anggota
 
-| Nama | NRP|
+| Nama							| NRP			|
 |-------------------------------|---------------|
-| Ahmad Wildan Fawwaz| 5027241001 |
-| Muhammad Rakha Hananditya R.| 5027241015 |
+| Ahmad Wildan Fawwaz			| 5027241001	|
+| Muhammad Rakha Hananditya R.	| 5027241015	|
 
 ## Asisten Penguji
-| Nama | Kode Asisten |
-|-----------------------|----|
-|  |  |
+| Nama							| Kode Asisten	|
+|-------------------------------|---------------|
+| Nayla Raissa Azzahra			| P5			|
 
 ## Pendahuluan
 
 بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيْمِ
 
 <p align="justify">
-&emsp; Segala puji syukur kita panjatkan atas kehadirat Allah Subḥānahu wa Ta‘ālā, karena berkat atas rahmat, karunia, dan nikmat-Nya praktikum modul 1 untuk mata kuliah Komunikasi Data dan Jaringan Komputer dapat diselesaikan dengan cukup. Tidak lupa shalawat serta salam semoga senantiasa tercurah kepada junjungan kita Nabi Muhammad Shallallāhu ‘alaihi wa Sallam, suri teladan terbaik bagi umat manusia, beserta keluarga, sahabat, dan para pengikutnya hingga akhir zaman.
+&emsp; Segala puji syukur kita panjatkan atas kehadirat Allah Subḥānahu wa Ta‘ālā, karena berkat atas rahmat, karunia, dan nikmat-Nya praktikum modul 5 untuk mata kuliah Komunikasi Data dan Jaringan Komputer dapat diselesaikan dengan baik. Tidak lupa shalawat serta salam semoga senantiasa tercurah kepada junjungan kita Nabi Muhammad Shallallāhu ‘alaihi wa Sallam, suri teladan terbaik bagi umat manusia, beserta keluarga, sahabat, dan para pengikutnya hingga akhir zaman.
 </p>
 
 <p align="justify">
@@ -77,37 +77,39 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 
 ## Walkthrough
 
-### • Misi 1
-### Memetakan Medan Perang
+### • Misi 1: Memetakan Medan Perang
 
-#### ‣ Soal 1 Misi 1
+#### a. Soal 1
 
 <blockquote>
-	<ol>
+	<ol start="1">
 		<li>
 			<p align="justify">
 				Identifikasi Perangkat:
-
-- Narya: Berfungsi sebagai DNS Server.
-- Vilya: Berfungsi sebagai DHCP Server.
-- Web Servers: Palantir  dan IronHills.
-- Client (Pasukan):
-  - Khamul: 5 host (Target/Burnice).
-  - Cirdan: 20 host (Lycaon).
-  - Isildur: 30 host (Policeboo).
-  - Durin: 50 host (Caesar).
-  - Gilgalad: 100 host (Ellen).
-  - Elendil: 200 host (Jane).
+				<ul>
+					<li>Narya: Berfungsi sebagai DNS Server.</li>
+					<li>Vilya: Berfungsi sebagai DHCP Server.</li>
+					<li>Web Servers: Palantir  dan IronHills.</li>
+					<li>Client (Pasukan):</li>
+					<ul>
+						<li>Khamul: 5 host (Target/Burnice).</li>
+						<li>Cirdan: 20 host (Lycaon).</li>
+						<li>Isildur: 30 host (Policeboo).</li>
+						<li>Durin: 50 host (Caesar).</li>
+						<li>Gilgalad: 100 host (Ellen).</li>
+						<li>Elendil: 200 host (Jane).</li>
+					</ul>
+				</ul>
 			</p>
 		</li>
 	</ol>
 </blockquote>
 
 
-### • Soal 2 Misi 1
+#### b. Soal 2
 
 <blockquote>
-	<ol>
+	<ol start="2">
 		<li>
 			<p align="justify">
 				Setelah membagi alamat IP menggunakan VLSM (Prefix IP sesuai kelompok), gambarkan pohon subnet yang menunjukkan hierarki pembagian IP di jaringan Aliansi. Lingkari subnet yang akan dilewati.
@@ -117,10 +119,10 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 </blockquote>
 
 
-### • Soal 3 Misi 1
+#### c. Soal 3
 
 <blockquote>
-	<ol>
+	<ol start="3">
 		<li>
 			<p align="justify">
 				Buatlah konfigurasi rute untuk menghubungkan semua subnet dengan benar. Pastikan perangkat dapat saling terhubung.
@@ -129,21 +131,20 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 	</ol>
 </blockquote>
 
-
-
-### • Soal 4 Misi 1
+#### d. Soal 4
 
 <blockquote>
-	<ol>
+	<ol start="4">
 		<li>
 			<p align="justify">
 				Konfigurasi Service → Dikerjakan setelah Misi 2 No. 1:
-        
-- Vilya sebagai DHCP Server agar perangkat dalam Khamul, Durin, Gilgalad, Elendil, Cirdan, dan Isildur menerima IP otomatis.
-- AnduinBanks, Rivendell, dan Minastir berfungsi sebagai DHCP Relay.
-- Narya sebagai DNS Server.
-- Palantir dan IronHills sebagai Web Server (Apache/Nginx).
-- Buat index.html berisikan : "Welcome to {hostname}".
+				<ul>
+					<li>Vilya sebagai DHCP Server agar perangkat dalam Khamul, Durin, Gilgalad, Elendil, Cirdan, dan Isildur menerima IP otomatis.</li>
+					<li>AnduinBanks, Rivendell, dan Minastir berfungsi sebagai DHCP Relay.</li>
+					<li>Narya sebagai DNS Server.</li>
+					<li>Palantir dan IronHills sebagai Web Server (Apache/Nginx).</li>
+					<li>Buat index.html berisikan : "Welcome to {hostname}".</li>
+				</ul>
 			</p>
 		</li>
 	</ol>
@@ -152,19 +153,34 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 
 ---
 
-### • Misi 2
-### Menemukan Jejak Kegelapan (Security Rules)
+### • Misi 2: Menemukan Jejak Kegelapan (Security Rules)
 
-### • Soal 1 Misi 2
+#### a. Soal 1
 
 <blockquote>
-	<ol>
+	<ol start="1">
 		<li>
 			<p align="justify">
 				Agar jaringan aman, terapkan aturan firewall berikut. 
+				<ul>
+					<li>Agar jaringan Aliansi bisa terhubung ke luar (Valinor/Internet), konfigurasi routing menggunakan iptables.</li>
+					<li>Syarat: Kalian TIDAK DIPERBOLEHKAN menggunakan target MASQUERADE.</li>
+				</ul>
+			</p>
+		</li>
+	</ol>
+</blockquote>
 
-  - Agar jaringan Aliansi bisa terhubung ke luar (Valinor/Internet), konfigurasi routing menggunakan iptables.
-    - Syarat: Kalian TIDAK DIPERBOLEHKAN menggunakan target MASQUERADE.
+#### b. Soal 2
+
+<blockquote>
+	<ol start="2">
+		<li>
+			<p align="justify">
+				Karena Vilya (DHCP) menyimpan data vital, pastikan tidak ada perangkat lain yang bisa melakukan PING ke Vilya.
+				<ul>
+					<li>Namun, Vilya tetap leluasa dapat mengakses/ping ke seluruh perangkat lain.</li>
+				</ul>
 			</p>
 		</li>
 	</ol>
@@ -172,81 +188,68 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 
 
 
-
-### • Soal 2 Misi 2
+#### c. Soal 3
 
 <blockquote>
-	<ol>
+	<ol start="3">
 		<li>
 			<p align="justify">
-				Karena Vilya (DHCP) menyimpan data vital, pastikan tidak ada perangkat lain yang bisa melakukan PING ke Vilya. <br>
-  - Namun, Vilya tetap leluasa dapat mengakses/ping ke seluruh perangkat lain.
+				Agar lokasi pasukan tidak bocor, hanya Vilya yang dapat mengakses Narya (DNS).
+				<ul>
+					<li>Gunakan nc (netcat) untuk memastikan akses port DNS (53) ini.</li>
+					<li><i>[Hapus aturan ini setelah pengujian agar internet lancar untuk install paket]</i></li>
+				</ul>
 			</p>
 		</li>
 	</ol>
 </blockquote>
 
 
-
-### • Soal 3 Misi 2
+#### d. Soal 4
 
 <blockquote>
 	<ol>
 		<li>
 			<p align="justify">
-				Agar lokasi pasukan tidak bocor, hanya Vilya yang dapat mengakses Narya (DNS). <br>
-  - Gunakan nc (netcat) untuk memastikan akses port DNS (53) ini. <br>
-  - [Hapus aturan ini setelah pengujian agar internet lancar untuk install paket]
+				Aktivitas mencurigakan terdeteksi di IronHills. Berdasarkan dekrit Raja, IronHills hanya boleh diakses pada Akhir Pekan (Sabtu & Minggu).
+				<ul>
+					<li>Akses hanya diizinkan untuk Faksi Kurcaci & Pengkhianat (Durin & Khamul) serta Faksi Manusia (Elendil & Isildur).</li>
+					<li>Karena hari ini adalah Rabu (Simulasikan waktu server), mereka harusnya tertolak. Gunakan curl untuk membuktikan blokir waktu ini.</li>
+				</ul>
 			</p>
 		</li>
 	</ol>
 </blockquote>
 
-
-### • Soal 4 Miai 2
+#### e. Soal 5
 
 <blockquote>
 	<ol>
 		<li>
 			<p align="justify">
-				Aktivitas mencurigakan terdeteksi di IronHills. Berdasarkan dekrit Raja, IronHills hanya boleh diakses pada Akhir Pekan (Sabtu & Minggu). <br>
-  - Akses hanya diizinkan untuk Faksi Kurcaci & Pengkhianat (Durin & Khamul) serta Faksi Manusia (Elendil & Isildur). <br>
-  - Karena hari ini adalah Rabu (Simulasikan waktu server), mereka harusnya tertolak. Gunakan curl untuk membuktikan blokir waktu ini. <br>
+				Sembari menunggu, pasukan berlatih di server Palantir. Akses dibatasi berdasarkan ras:
+				<ul>
+					<li>Faksi Elf (Gilgalad & Cirdan): Boleh akses jam 07.00 - 15.00.</li>
+					<li>Faksi Manusia (Elendil & Isildur): Boleh akses jam 17.00 - 23.00.</li>
+					<li>Gunakan curl untuk memastikan akses sesuai jam.</li>
+				</ul>
 			</p>
 		</li>
 	</ol>
 </blockquote>
 
-
-
-### • Soal 5 Misi 2
+#### f. Soal 6
 
 <blockquote>
 	<ol>
 		<li>
 			<p align="justify">
-				Sembari menunggu, pasukan berlatih di server Palantir. Akses dibatasi berdasarkan ras: <br>
-	- Faksi Elf (Gilgalad & Cirdan): Boleh akses jam 07.00 - 15.00. <br>
-	- Faksi Manusia (Elendil & Isildur): Boleh akses jam 17.00 - 23.00. <br>
-	- Gunakan curl untuk memastikan akses sesuai jam.
-			</p>
-		</li>
-	</ol>
-</blockquote>
-
-
-
-
-### • Soal 6 Misi 2
-
-<blockquote>
-	<ol>
-		<li>
-			<p align="justify">
-				Pasukan Manusia (Elendil) diminta menguji keamanan Palantir. Lakukan simulasi port scan dengan nmap rentang port 1-100. <br>
-	- Web server harus memblokir scan port yang melebihi 15 port dalam waktu 20 detik. <br>
-	- Penyerang yang terblokir tidak dapat melakukan ping, nc, atau curl ke Palantir. <br>
-	- Catat log iptables dengan prefix "PORT_SCAN_DETECTED".
+				Pasukan Manusia (Elendil) diminta menguji keamanan Palantir. Lakukan simulasi port scan dengan nmap rentang port 1-100.
+				<ul>
+					<li>Web server harus memblokir scan port yang melebihi 15 port dalam waktu 20 detik.</li>
+					<li>Penyerang yang terblokir tidak dapat melakukan ping, nc, atau curl ke Palantir.</li>
+					<li>Catat log iptables dengan prefix "PORT_SCAN_DETECTED".</li>
+				</ul>
 			</p>
 		</li>
 	</ol>
