@@ -484,6 +484,358 @@ ping 192.229.1.230 -c 5
 	</ol>
 </blockquote>
 
+<p align="justify">
+&emsp; Untuk dapat menyelesaikan persoalan di atas, maka kita perlu mengkonfigurasi terlebih dahulu node <i>non-client</i>yang bersangkutan. Di mana langkah implementasinya:
+</p>
+
+##### • Narya (DNS Server dan Forwarder)
+
+1. Menambahkan `192.168.122.1` sebagai _nameserver_.
+
+```sh
+echo "nameserver 192.168.122.1" > /etc/resolv.conf
+```
+
+2. Memperbarui daftar package yang ada pada apt-get.
+
+```sh
+apt-get update
+```
+
+3. Menginstall `bind9`.
+
+```sh
+apt-get install bind9 -y
+```
+
+4. Membuat link simbolik `/etc/init.d/bind9` yang merujuk ke `/etc/init.d/named`.
+
+```bash
+ln -s /etc/init.d/named /etc/init.d/bind9
+```
+
+<p align="justify">
+&emsp; Kemudian setelah menginstall bind9, kita perlu melakukan konfigurasi domain terlebih dahulu pada file <code>/etc/bind/named.conf.local</code>. Di mana langkah implementasinya adalah:
+</p>
+
+5. Membuat file konfigurasi `/etc/bind/named.conf.local` dan menetapkan zona DNS `K36.com` dengan tipe `master` untuk Narya.
+
+```bash
+cat > /etc/bind/named.conf.local <<'EOF'
+zone "K36.com" {
+        type master;
+        file "/etc/bind/ns1/K36.com";
+};
+EOF
+```
+
+6. Membuat direktori `/etc/bind/ns1`.
+
+```bash
+mkdir -p /etc/bind/ns1
+```
+
+7. Mengalihkan kepemilikan direktori `/etc/bind/ns1` ke user `bind`.
+```bash
+chown bind:bind /etc/bind/ns1
+```
+
+<p align="justify">
+Langkah selanjutnya adalah membuat file zona DNS otoritatif pada Narya, di mana ketentuannya:
+	<ul>
+		<li>
+			Start of Authority (SOA) yang merujuk ke nama domain <code>ns1.K36.com</code>.
+		</li>
+		<li>
+			Nameserver Record (NS) untuk nama domain <code>ns1.K36.com</code>.
+		</li>
+		<li>
+			Address Record (A) untuk IP address dari node <b>Narya</b> yang merujuk ke nama domain <code>ns1.K36.com</code>. 
+		</li>
+		<li>
+			Address Record (A) untuk IP address dari node <b>Narya</b> yang merujuk ke nama domain apex (@) <code>K36.com</code>. 
+		</li>
+		<li>
+			Address Record (A) untuk IP address dari node <b>Vilya</b>, <b>IronHills</b>, dan <b>Palantir</b>. 
+		</li>
+		<li>
+			Address Record (A) untuk IP address dari node <b>IronHills</b> dan <b>Palantir</b> yang merujuk ke nama domain <code>www.K36.com</code>. 
+		</li>
+	</ul>
+Dengan langkah implementasinya:
+</p>
+
+8. Membuat file `/etc/bind/ns1/K36.com` dan melakukan konfigurasi sesuai dengan ketentuan zona.
+
+```bash
+cat > /etc/bind/ns1/K36.com <<'EOF'
+$TTL    604800          ; Waktu cache default (detik)
+@       IN      SOA     ns1.K36.com. root.K36.com. (
+                        2025100401 ; Serial (format YYYYMMDDXX)
+                        604800     ; Refresh (1 minggu)
+                        86400      ; Retry (1 hari)
+                        2419200    ; Expire (4 minggu)
+                        604800 )   ; Negative Cache TTL
+;
+
+@       IN      NS      ns1.K36.com.
+
+ns1         IN      A       192.229.1.203  ; IP Narya
+@           IN      A       192.229.1.203  ; IP Narya
+vilya       IN      A       192.229.1.202
+ironhills   IN      A       192.229.1.222
+palantir    IN      A       192.229.1.238
+
+www         IN      A       192.229.1.222
+www         IN      A       192.229.1.238
+EOF
+```
+
+9. Mendelegasikan wewenang atas sebuah subdomain pada file `/etc/bind/named.conf.options`.
+
+```bash
+cat > /etc/bind/named.conf.options <<'EOF'
+options {
+    directory "/var/cache/bind";
+
+    forwarders {
+        192.168.122.1;
+    };
+
+    dnssec-validation no;
+    listen-on-v6 { any; };
+    allow-query { any; };
+    auth-nxdomain no;
+};
+EOF 
+```
+
+10. Menambahkan klausa pada file konfigurasi `/etc/bind/named.conf.local` yang menetapkan zona Reverse DNS `1.229.192.in-addr.arpa` dengan tipe `master` untuk Narya.
+
+```bash
+cat >> /etc/bind/named.conf.local <<'EOF'
+
+zone "1.229.192.in-addr.arpa" {
+        type master;
+        file "/etc/bind/ns1/1.229.192.in-addr.arpa";
+};
+EOF
+```
+
+<p align="justify">
+Langkah selanjutnya adalah membuat file zona Reverse DNS otoritatif pada Narya, di mana ketentuannya:
+	<ul>
+		<li>
+			Start of Authority (SOA) yang merujuk ke nama domain <code>ns1.K36.com</code>.
+		</li>
+		<li>
+			Nameserver Record (NS) untuk nama domain <code>ns1.K36.com</code>.
+		</li>
+		<li>
+			Pointer Record (PTR) untuk nama domain <code>ns1.K36.com</code> yang merujuk ke IP address dari node <b>Narya</b>. 
+		</li>
+		<li>
+			Pointer Record (PTR) untuk nama domain <code>vilya.K36.com</code> yang merujuk ke IP address dari node <b>Vilya</b>. 
+		</li>
+		<li>
+			Pointer Record (PTR) untuk nama domain <code>ironhills.K36.com</code> yang merujuk ke IP address dari node <b>IronHills</b>. 
+		</li>
+		<li>
+			Pointer Record (PTR) untuk nama domain <code>palantir.K36.com</code> yang merujuk ke IP address dari node <b>Palantir</b>. 
+		</li>
+	</ul>
+Dengan langkah implementasinya:
+</p>
+
+11. Membuat file `/etc/bind/ns1/1.229.192.in-addr.arpa` dan melakukan konfigurasi sesuai dengan ketentuan zona.
+
+```bash
+cat > /etc/bind/ns1/1.229.192.in-addr.arpa <<'EOF'
+$TTL    604800          ; Waktu cache default (detik)
+@       IN      SOA     ns1.K36.com. root.K36.com. (
+                        2025100401 ; Serial (format YYYYMMDDXX)
+                        604800     ; Refresh (1 minggu)
+                        86400      ; Retry (1 hari)
+                        2419200    ; Expire (4 minggu)
+                        604800 )   ; Negative Cache TTL
+;
+
+@       IN      NS      ns1.K36.com.
+
+203     IN      PTR     ns1.K36.com.
+202     IN      PTR     vilya.K36.com.
+222     IN      PTR     ironhills.K36.com.
+238     IN      PTR     palantir.K36.com.
+EOF
+```
+
+12. Melakukan restart pada service `bind9`.
+
+```bash
+service bind9 restart
+```
+
+##### • Vilya (DHCP Server)
+
+1. Menambahkan `192.229.1.203` atau alamat IP dari Narya sebagai _nameserver_.
+
+```sh
+echo "nameserver 192.229.1.203" > /etc/resolv.conf
+```
+
+2. Memperbarui daftar package yang ada pada apt-get.
+
+```bash
+apt-get update
+```
+
+3. Menginstall `isc-dhcp-server`.
+
+```bash
+apt-get install isc-dhcp-server -y
+```
+
+4. Membuat file konfigurasi `/etc/default/isc-dhcp-server` dan menetapkan interface yang digunakan DHCP Server untuk mendengar request DHCP.
+
+```bash
+cat > /etc/default/isc-dhcp-server << 'EOF'
+INTERFACESv4="eth0"
+EOF
+```
+
+5. Membuat file konfigurasi `/etc/dhcp/dhcpd.conf` dan menetapkan interface range pool IP yang disediakan oleh server dengan mengikuti ketentuan tabel VLSM.
+
+```bash
+cat > /etc/dhcp/dhcpd.conf << 'EOF'
+default-lease-time 600;
+max-lease-time 7200;
+authoritative;
+
+subnet 192.229.0.0 netmask 255.255.255.0 {
+    option routers 192.229.0.1;
+    option subnet-mask 255.255.255.0;
+    option broadcast-address 192.229.0.255;
+    option domain-name-servers 192.229.1.203;
+    range 192.229.0.2 192.229.0.254;
+}
+
+subnet 192.229.1.0 netmask 255.255.255.128 {
+    option routers 192.229.1.1;
+    option subnet-mask 255.255.255.128;
+    option broadcast-address 192.229.1.127;
+    option domain-name-servers 192.229.1.203;
+    range 192.229.1.2 192.229.1.126;
+}
+
+subnet 192.229.1.128 netmask 255.255.255.192 {
+    option routers 192.229.1.129;
+    option subnet-mask 255.255.255.192;
+    option broadcast-address 192.229.1.191;
+    option domain-name-servers 192.229.1.203;
+    range 192.229.1.130 192.229.1.190;
+}
+
+subnet 192.229.1.192 netmask 255.255.255.248 {
+    option routers 192.229.1.193;
+    option subnet-mask 255.255.255.248;
+    option broadcast-address 192.229.1.199;
+    option domain-name-servers 192.229.1.203;
+    range 192.229.1.194 192.229.1.198;
+}
+
+subnet 192.229.1.200 netmask 255.255.255.248 {
+}
+EOF
+```
+
+6. Melakukan restart pada service `isc-dhcp-server`.
+
+```bash
+service isc-dhcp-server restart
+```
+
+##### • AnduinBanks, Rivendell, Wilderland, dan Minastir (DHCP Relay)
+
+1. Menambahkan `192.229.1.203` atau alamat IP dari Narya sebagai _nameserver_.
+
+```sh
+echo "nameserver 192.229.1.203" > /etc/resolv.conf
+```
+
+2. Memperbarui daftar package yang ada pada apt-get.
+
+```bash
+apt-get update
+```
+
+3. Menginstall `isc-dhcp-relay`.
+
+```bash
+apt-get install isc-dhcp-relay -y
+```
+
+4. Membuat file konfigurasi `/etc/default/isc-dhcp-relay` dan menetapkan alamat dari DHCP Server dan interface yang digunakan DHCP Relay untuk meneruskan request DHCP.
+
+a. AnduinBanks
+
+```bash
+cat > /etc/default/isc-dhcp-relay << 'EOF'
+SERVERS="192.229.1.202"
+INTERFACES="eth0 eth1"
+OPTIONS=""
+EOF
+```
+
+b. Rivendell
+
+```sh
+cat > /etc/default/isc-dhcp-relay << 'EOF'
+SERVERS="192.229.1.202"
+INTERFACES="eth0 eth1"
+OPTIONS=""
+EOF
+```
+
+c. Wilderland
+
+```sh
+cat > /etc/default/isc-dhcp-relay << 'EOF'
+SERVERS="192.229.1.202"
+INTERFACES="eth0 eth1 eth2"
+OPTIONS=""
+EOF
+```
+
+d. Minastir
+
+```sh
+cat > /etc/default/isc-dhcp-relay << 'EOF'
+SERVERS="192.229.1.202"
+INTERFACES="eth0 eth1 eth2"
+OPTIONS=""
+EOF
+```
+
+5. Membuat file konfigurasi `/etc/sysctl.conf` dan menetapkan fungsi IP forwarding pada sistem.
+
+```bash
+cat > /etc/sysctl.conf << 'EOF'
+net.ipv4.ip_forward=1
+EOF
+```
+
+6. Memuat ulang konfigurasi sistem.
+
+```bash
+sysctl -p
+```
+
+7. Melakukan restart pada service `isc-dhcp-relay`.
+
+```bash
+service isc-dhcp-relay restart
+```
+
 ### • Misi 2: Menemukan Jejak Kegelapan (Security Rules)
 
 #### a. Soal 1
