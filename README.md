@@ -1013,7 +1013,7 @@ service nginx restart
 </blockquote>
 
 <p align="justify">
-&emsp; Untuk memastikan setiap node dapat terhubung ke <b>WAN</b> tanpa MASQUARADE, mengkonfigurasi terlebih dahulu node <b>Osgilath</b> untuk menambahkan konfigurasi <code>iptables</code>:
+&emsp; Untuk memastikan setiap node dapat terhubung ke <b>WAN</b> tanpa MASQUARADE, kita perlu melakukan konfigurasi terlebih dahulu pada node <b>Osgilath</b> dan menambahkan peraturan <code>iptables</code>:
 </p>
 
 ```sh
@@ -1185,3 +1185,48 @@ ping google.com -c 5
 				</ul>
 		</li>
 </blockquote>
+
+<p align="justify">
+&emsp; Untuk memastikan tidak ada node yang dapat terhubung dengan <b>Khamul</b>, ita perlu melakukan konfigurasi terlebih dahulu pada node <b>Wilderland</b> dan menambahkan peraturan <code>iptables</code>:
+</p>
+
+```sh
+iptables -A INPUT  -s 192.229.1.192/29 -j REJECT
+iptables -A OUTPUT -d 192.229.1.192/29 -j REJECT
+iptables -A FORWARD -s 192.229.1.192/29 -j REJECT
+iptables -A FORWARD -d 192.229.1.192/29 -j REJECT
+```
+
+<p align="justify">
+&emsp; Di mana command di atas akan menolak semua <i>packet</i> yang berasal dari Khamul menuju Wilderland (INPUT), berasal dari Wilderland menuju Khamul (OUTPUT) dan <i>packet</i> yang melewati Wilderland dan memiliki asal dari atau tujuan ke Khamul (FORWARD).
+</p>
+
+<p align="justify">
+&emsp; Terakhir, kita perlu memverifikasi bahwasannya Khamul benar-benar terisolasi dan semua <i>packet</i> yang berkaitan dengannya ditolak. Hal ini dapat kita lakukan dengan menggunakan command <code>nc</code> dan <code>ping</code> dari luar Khamul:
+</p>
+
+```bash
+nc -v 192.229.1.198 80
+ping 192.229.1.198 -c 5
+```
+
+<p align="justify">
+Menggunakan Isildur sebagai contoh:
+</p>
+
+<p align="center">
+	<img src="img_modul5/image14.png" alt="el khamul" width="80%" height="80%">  
+</p>
+
+<p align="justify">
+Selain itu, kita juga perlu memverifikasi bahwasannya tidak ada <i>packet</i> yang dapat keluar dari Khamul. Hal ini dapat kita lakukan dengan menggunakan command <code>ping</code> dari dalam Khamul:
+
+```bash
+ping 192.229.1.193 -c 5
+ping 192.229.1.203 -c 5
+```
+
+</p>
+<p align="center">
+	<img src="img_modul5/image15.png" alt="el makhul" width="80%" height="80%"> 
+</p>
