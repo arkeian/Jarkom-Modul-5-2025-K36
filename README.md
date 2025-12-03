@@ -189,6 +189,281 @@ Di mana pembagian _range_ IP pada tabel VLSM, diurutkan berdasarkan **jumlah IP*
 	</ol>
 </blockquote>
 
+<p align="justify">
+&emsp; Langkah selanjutnya, untuk memastikan bahwa setiap node dapat berkomunikasi dengan satu sama lain, maka kita dapat beralih ke menu <code>Configure > Edit Network Configuration</code> untuk setiap node yang ada untuk melakukan <b><i>assign</i> IP</b> dan <b><i>routing</i></b>.
+</p>
+
+Di mana ketentuan untuk setiap nodenya:
+
+1. **Osgilath**
+
+```sh
+auto eth0
+iface eth0 inet static
+   address 192.168.122.10
+   netmask 255.255.255.0
+   gateway 192.168.122.1
+
+auto eth1
+iface eth1 inet static
+   address 192.229.1.213
+   netmask 255.255.255.252
+
+auto eth2
+iface eth2 inet static
+   address 192.229.1.209
+   netmask 255.255.255.252
+
+auto eth3
+iface eth3 inet static
+   address 192.229.1.217
+   netmask 255.255.255.252
+
+up route add -net 192.229.1.220 netmask 255.255.255.252 gw 192.229.1.210
+up route add -net 192.229.1.232 netmask 255.255.255.252 gw 192.229.1.210
+up route add -net 192.229.1.128 netmask 255.255.255.192 gw 192.229.1.210
+up route add -net 192.229.1.192 netmask 255.255.255.248 gw 192.229.1.210
+up route add -net 192.229.1.224 netmask 255.255.255.252 gw 192.229.1.218
+up route add -net 192.229.0.0 netmask 255.255.255.0 gw 192.229.1.218
+up route add -net 192.229.1.236 netmask 255.255.255.252 gw 192.229.1.218
+up route add -net 192.229.1.228 netmask 255.255.255.252 gw 192.229.1.218
+up route add -net 192.229.1.0 netmask 255.255.255.128 gw 192.229.1.218
+up route add -net 192.229.1.200 netmask 255.255.255.248 gw 192.229.1.214
+up route add default gw 192.168.122.1
+```
+
+2. **Moria**
+
+```sh
+auto eth0
+iface eth0 inet static
+   address 192.229.1.210
+   netmask 255.255.255.252
+   gateway 192.229.1.209
+
+auto eth1
+iface eth1 inet static
+   address 192.229.1.221
+   netmask 255.255.255.252
+
+auto eth2
+iface eth2 inet static
+   address 192.229.1.233
+   netmask 255.255.255.252
+
+up route add -net 192.229.1.128 netmask 255.255.255.192 gw 192.229.1.234
+up route add -net 192.229.1.192 netmask 255.255.255.248 gw 192.229.1.234
+up route add default gw 192.229.1.209
+```
+
+3. **IronHills**
+
+```sh
+auto eth0
+iface eth0 inet static
+   address 192.229.1.222
+   netmask 255.255.255.252
+   gateway 192.229.1.221
+```
+
+4. **Wilderland**
+
+```sh
+auto eth0
+iface eth0 inet static
+   address 192.229.1.234
+   netmask 255.255.255.252
+   gateway 192.229.1.233
+
+auto eth1
+iface eth1 inet static
+   address 192.229.1.129
+   netmask 255.255.255.192
+
+auto eth2
+iface eth2 inet static
+   address 192.229.1.193
+   netmask 255.255.255.248
+
+up route add default gw 192.229.1.233
+```
+
+5. **Durin**
+
+```sh
+auto eth0
+iface eth0 inet dhcp
+```
+
+6. **Khamul**
+
+```sh
+auto eth0
+iface eth0 inet dhcp
+```
+7. **Rivendell**
+
+```sh
+auto eth0
+iface eth0 inet static
+   address 192.229.1.214
+   netmask 255.255.255.252
+   gateway 192.229.1.213
+
+auto eth1
+iface eth1 inet static
+   address 192.229.1.201
+   netmask 255.255.255.248
+
+up route add default gw 192.229.1.213
+```
+
+8. **Vilya**
+
+```sh
+auto eth0
+iface eth0 inet static
+   address 192.229.1.202
+   netmask 255.255.255.248
+   gateway 192.229.1.201
+```
+
+9. **Narya**
+
+```sh
+auto eth0
+iface eth0 inet static
+   address 192.229.1.203
+   netmask 255.255.255.248
+   gateway 192.229.1.201
+```
+
+10. **Minastir**
+
+```sh
+auto eth0
+iface eth0 inet static
+   address 192.229.1.218
+   netmask 255.255.255.252
+   gateway 192.229.1.217
+
+auto eth1
+iface eth1 inet static
+   address 192.229.0.1
+   netmask 255.255.255.0
+
+auto eth2
+iface eth2 inet static
+   address 192.229.1.225
+   netmask 255.255.255.252
+
+up route add -net 192.229.1.236 netmask 255.255.255.252 gw 192.229.1.226
+up route add -net 192.229.1.228 netmask 255.255.255.252 gw 192.229.1.226
+up route add -net 192.229.1.0 netmask 255.255.255.128 gw 192.229.1.226
+up route add default gw 192.229.1.217
+```
+
+11. **Elendil**
+
+```sh
+auto eth0
+iface eth0 inet dhcp
+```
+
+12. **Isildur**
+
+```sh
+auto eth0
+iface eth0 inet dhcp
+```
+
+13. **Pelargir**
+
+```sh
+auto eth0
+iface eth0 inet static
+   address 192.229.1.226
+   netmask 255.255.255.252
+   gateway 192.229.1.225
+
+auto eth1
+iface eth1 inet static
+   address 192.229.1.229
+   netmask 255.255.255.252
+
+auto eth2
+iface eth2 inet static
+   address 192.229.1.237
+   netmask 255.255.255.252
+
+up route add -net 192.229.1.0 netmask 255.255.255.128 gw 192.229.1.230
+up route add default gw 192.229.1.225
+```
+
+14. **Palantir**
+
+```sh
+auto eth0
+iface eth0 inet static
+   address 192.229.1.238
+   netmask 255.255.255.252
+   gateway 192.229.1.237
+```
+
+15. **AnduinBanks**
+
+```sh
+auto eth0
+iface eth0 inet static
+   address 192.229.1.230
+   netmask 255.255.255.252
+   gateway 192.229.1.229
+
+auto eth1
+iface eth1 inet static
+   address 192.229.1.1
+   netmask 255.255.255.128
+
+up route add default gw 192.229.1.229
+```
+
+16. **Gilgalad**
+
+```sh
+auto eth0
+iface eth0 inet dhcp
+```
+
+17. **Cirdan**
+
+```sh
+auto eth0
+iface eth0 inet dhcp
+```
+
+<p align="justify">
+&emsp; Terakhir, kita perlu memastikan bahwasannya semua konfigurasi <i>routing</i> sudah benar dan <i>packet</i> yang dikirimkan dari suatu subnet dapat mencapai destinasinya di subnet yang berbeda. Hal ini dapat dilakukan dengan menggunakan command <code>ping</code>, di mana langkah implementasinya:
+</p>
+
+1. `ping` **Palantir** dari **IronHills**:
+
+```sh
+ping 192.229.1.238 -c 5
+```
+
+<p align="center">
+	<img src="img_modul5/image02.png" alt="el pingpong" width="80%" height="80%">  
+</p>
+
+2. `ping` **AnduinBanks** dari **Vilya**:
+
+```sh
+ping 192.229.1.230 -c 5
+```
+
+<p align="center">
+	<img src="img_modul5/image03.png" alt="el pongping" width="80%" height="80%">  
+</p>
 
 #### d. Soal 4
 
