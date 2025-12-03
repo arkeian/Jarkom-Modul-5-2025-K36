@@ -488,7 +488,7 @@ ping 192.229.1.230 -c 5
 &emsp; Untuk dapat menyelesaikan persoalan di atas, maka kita perlu mengkonfigurasi terlebih dahulu node <i>non-client</i>yang bersangkutan. Di mana langkah implementasinya:
 </p>
 
-##### • Narya (DNS Server dan Forwarder)
+#### • Narya (DNS Server dan Forwarder)
 
 1. Menambahkan `192.168.122.1` sebagai _nameserver_.
 
@@ -675,7 +675,28 @@ EOF
 service bind9 restart
 ```
 
-##### • Vilya (DHCP Server)
+<p align="justify">
+&emsp; Seterusnya, kita perlu memverifikasi bahwasannya zona <code>K36.com</code> di Narya dapat berjalan dengan lancar dan bersifat otoritatif. Di mana kita dapat melakukannya dengan menjalankan:
+</p>
+
+```bash
+dig @192.229.1.203 ns1.K36.com
+dig @192.229.1.203 K36.com
+```
+
+<p align="justify">
+Menggunakan Isildur sebagai contoh:
+</p>
+
+<p align="center">
+	<img src="img_modul5/image12.png" alt="el eneswan" width="80%" height="80%">  
+</p>
+
+<p align="center">
+	<img src="img_modul5/image13.png" alt="el apex" width="80%" height="80%">  
+</p>
+
+#### • Vilya (DHCP Server)
 
 1. Menambahkan `192.229.1.203` atau alamat IP dari Narya sebagai _nameserver_.
 
@@ -754,7 +775,7 @@ EOF
 service isc-dhcp-server restart
 ```
 
-##### • AnduinBanks, Rivendell, Wilderland, dan Minastir (DHCP Relay)
+#### • AnduinBanks, Rivendell, Wilderland, dan Minastir (DHCP Relay)
 
 1. Menambahkan `192.229.1.203` atau alamat IP dari Narya sebagai _nameserver_.
 
@@ -835,6 +856,144 @@ sysctl -p
 ```bash
 service isc-dhcp-relay restart
 ```
+
+<p align="justify">
+&emsp; Sebelum melanjutkan ke server web, kita perlu memverifikasi bahwasannya client dinamis dapat menerima offer IP address dari DHCP Server dan menggunakan IP address tersebut. Menggunakan <b>Durin</b>, <b>Isildur</b>, dan <b>Cirdan</b> sebagai contoh:
+</p>
+
+<p align="center">
+	<img src="img_modul5/image06.png" alt="el durin" width="80%" height="80%">  
+</p>
+
+<p align="center">
+	<img src="img_modul5/image07.png" alt="el isildur" width="80%" height="80%">  
+</p>
+
+<p align="center">
+	<img src="img_modul5/image08.png" alt="el cirdan" width="80%" height="80%">  
+</p>
+
+<p align="justify">
+&emsp; Berdasarkan screenshot di atas, dapat disimpulkan bahwasannya client dinamis berhasil mendapatkan IP address sesuai ketentuan range pool pada tabel VLSM.
+</p>
+
+#### • IronHills dan Palantir (Nginx Web Servers)
+
+1. Menambahkan `192.229.1.203` atau alamat IP dari Narya sebagai _nameserver_.
+
+```sh
+echo "nameserver 192.229.1.203" > /etc/resolv.conf
+```
+
+2. Memperbarui daftar package yang ada pada apt-get.
+
+```bash
+apt-get update
+```
+
+3. Menginstall `nginx`.
+
+```bash
+apt-get install nginx -y
+```
+
+3. Membuat direktori `/var/www/html`.
+
+```bash
+mkdir -p /var/www/html/
+```
+
+4. Mendapatkan _value hostname_ dari node yang dipakai saat ini.
+
+ ```bash
+HOSTNAME=$(hostname)
+```
+
+5. Membuat file `index.html` pada `/var/www/html` dan mengkonfigurasikannya untuk menampilkan hostname.
+
+
+```bash
+cat > /var/www/html/index.html <<EOF
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Welcome to $HOSTNAME</h1>
+    </body>
+</html>
+EOF
+```
+
+6. Membuat file konfigurasi `/etc/nginx/sites-available/[PHP Worker]` dan menetapkan akses web menggunakan nama domain.
+
+a. IronHills
+
+```sh
+cat > /etc/nginx/sites-available/ironhills <<'EOF'
+server {
+    listen 80;
+    server_name ironhills.K36.com;
+
+    root /var/www/html;
+    index index.html;
+}
+EOF
+```
+
+b. Palantir
+
+```sh
+cat > /etc/nginx/sites-available/palantir <<'EOF'
+server {
+    listen 80;
+    server_name palantir.K36.com;
+
+    root /var/www/html;
+    index index.html;
+}
+EOF
+```
+
+7. Membuat link simbolik `/etc/nginx/sites-enabled/` yang merujuk ke `/etc/nginx/sites-available/[PHP Worker]`.
+
+a. IronHills
+
+```sh
+ln -s /etc/nginx/sites-available/ironhills /etc/nginx/sites-enabled/
+```
+
+b. Palantir
+
+```sh
+ln -s /etc/nginx/sites-available/palantir /etc/nginx/sites-enabled/
+```
+
+8. Menghapus konfigurasi default dari `nginx`.
+
+```bash
+rm /etc/nginx/sites-enabled/default
+```
+
+9. Melakukan restart pada service `nginx`.
+
+```bash
+service nginx restart
+```
+
+<p align="justify">
+&emsp; Terakhir, kita perlu memastikan bahwasannya server web dapat berjalan dengan lancar. Di mana hal ini dapat dilakukan dengan menggunakan command <code>curl</code>. Menggunakan <b>Isildur</b> sebagai contoh:
+</p>
+
+<p align="center">
+	<img src="img_modul5/image09.png" alt="el ironhills" width="80%" height="80%">  
+</p>
+
+<p align="center">
+	<img src="img_modul5/image10.png" alt="el palantir" width="80%" height="80%"> 
+</p>
+
+<p align="center">
+	<img src="img_modul5/image11.png" alt="el wewewe" width="80%" height="80%"> 
+</p>
 
 ### • Misi 2: Menemukan Jejak Kegelapan (Security Rules)
 
