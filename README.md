@@ -157,10 +157,9 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 	<ol start="1">
 		<li>
 			<p align="justify">
-				Agar jaringan aman, terapkan aturan firewall berikut. 
+				Agar jaringan Aliansi bisa terhubung ke luar (Valinor/Internet), konfigurasi routing menggunakan iptables.
 				<ul>
-					<li>Agar jaringan Aliansi bisa terhubung ke luar (Valinor/Internet), konfigurasi routing menggunakan iptables.</li>
-					<li>Syarat: Kalian TIDAK DIPERBOLEHKAN menggunakan target MASQUERADE.</li>
+					<li><b>Syarat:</b> Kalian <b>TIDAK DIPERBOLEHKAN</b> menggunakan target MASQUERADE.</li>
 				</ul>
 			</p>
 		</li>
@@ -173,9 +172,9 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 	<ol start="2">
 		<li>
 			<p align="justify">
-				Karena Vilya (DHCP) menyimpan data vital, pastikan tidak ada perangkat lain yang bisa melakukan PING ke Vilya.
+				Karena <b>Vilya</b> (DHCP) menyimpan data vital, pastikan <b>tidak ada perangkat lain yang bisa melakukan PING ke Vilya</b>.
 				<ul>
-					<li>Namun, Vilya tetap leluasa dapat mengakses/ping ke seluruh perangkat lain.</li>
+					<li>Namun, <b>Vilya</b> tetap leluasa dapat mengakses/<code>ping</code> ke seluruh perangkat lain.</li>
 				</ul>
 			</p>
 		</li>
@@ -190,9 +189,9 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 	<ol start="3">
 		<li>
 			<p align="justify">
-				Agar lokasi pasukan tidak bocor, hanya Vilya yang dapat mengakses Narya (DNS).
+				Agar lokasi pasukan tidak bocor, <b>hanya Vilya yang dapat mengakses Narya (DNS)</b>.
 				<ul>
-					<li>Gunakan nc (netcat) untuk memastikan akses port DNS (53) ini.</li>
+					<li>Gunakan <code>nc</code> (netcat) untuk memastikan akses port DNS (53) ini.</li>
 					<li><i>[Hapus aturan ini setelah pengujian agar internet lancar untuk install paket]</i></li>
 				</ul>
 			</p>
@@ -207,10 +206,10 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 	<ol start="4">
 		<li>
 			<p align="justify">
-				Aktivitas mencurigakan terdeteksi di IronHills. Berdasarkan dekrit Raja, IronHills hanya boleh diakses pada Akhir Pekan (Sabtu & Minggu).
+				Aktivitas mencurigakan terdeteksi di <b>IronHills</b>. Berdasarkan dekrit Raja, IronHills hanya boleh diakses pada <b>Akhir Pekan (Sabtu & Minggu)</b>.
 				<ul>
-					<li>Akses hanya diizinkan untuk Faksi Kurcaci & Pengkhianat (Durin & Khamul) serta Faksi Manusia (Elendil & Isildur).</li>
-					<li>Karena hari ini adalah Rabu (Simulasikan waktu server), mereka harusnya tertolak. Gunakan curl untuk membuktikan blokir waktu ini.</li>
+					<li>Akses hanya diizinkan untuk <b>Faksi Kurcaci & Pengkhianat</b> (Durin & Khamul) serta <b>Faksi Manusia</b> (Elendil & Isildur).</li>
+					<li>Karena hari ini adalah <b>Rabu</b> (Simulasikan waktu server), mereka harusnya tertolak. Gunakan <code>curl</code> untuk membuktikan blokir waktu ini.</li>
 				</ul>
 			</p>
 		</li>
@@ -223,11 +222,11 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 	<ol start="5">
 		<li>
 			<p align="justify">
-				Sembari menunggu, pasukan berlatih di server Palantir. Akses dibatasi berdasarkan ras:
+				Sembari menunggu, pasukan berlatih di server <b>Palantir</b>. Akses dibatasi berdasarkan ras:
 				<ul>
-					<li>Faksi Elf (Gilgalad & Cirdan): Boleh akses jam 07.00 - 15.00.</li>
-					<li>Faksi Manusia (Elendil & Isildur): Boleh akses jam 17.00 - 23.00.</li>
-					<li>Gunakan curl untuk memastikan akses sesuai jam.</li>
+					<li><b>Faksi Elf</b> (Gilgalad & Cirdan): Boleh akses jam <b>07.00 - 15.00</b>.</li>
+					<li><b>Faksi Manusia</b> (Elendil & Isildur): Boleh akses jam <b>17.00 - 23.00</b>.</li>
+					<li>Gunakan <code>curl</code> untuk memastikan akses sesuai jam.</li>
 				</ul>
 			</p>
 		</li>
@@ -240,10 +239,10 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 	<ol start="6">
 		<li>
 			<p align="justify">
-				Pasukan Manusia (Elendil) diminta menguji keamanan Palantir. Lakukan simulasi port scan dengan nmap rentang port 1-100.
+				Pasukan Manusia (Elendil) diminta menguji keamanan <b>Palantir</b>. Lakukan simulasi port scan dengan <code>nmap</code> rentang port 1-100.
 				<ul>
-					<li>Web server harus memblokir scan port yang melebihi 15 port dalam waktu 20 detik.</li>
-					<li>Penyerang yang terblokir tidak dapat melakukan ping, nc, atau curl ke Palantir.</li>
+					<li>Web server harus memblokir scan port yang melebihi <b>15 port</b> dalam waktu <b>20 detik</b>.</li>
+					<li>Penyerang yang terblokir tidak dapat melakukan <code>ping</code>, <code>nc</code>, atau <code>curl</code> ke Palantir.</li>
 					<li>Catat log iptables dengan prefix "PORT_SCAN_DETECTED".</li>
 				</ul>
 			</p>
@@ -257,10 +256,10 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 	<ol start="7">
 		<li>
 			<p align="justify">
-				Hari Sabtu tiba. Akses ke IronHills dibatasi untuk mencegah overload.
+				Hari Sabtu tiba. Akses ke <b>IronHills</b> dibatasi untuk mencegah overload.
 				<ul>
-					<li>Akses ke IronHills hanya boleh berasal dari 3 koneksi aktif per IP dalam waktu bersamaan.</li>
-					<li>Lakukan uji coba beban (stress test) menggunakan curl atau ab.</li>
+					<li>Akses ke IronHills hanya boleh berasal dari <b>3 koneksi aktif</b> per IP dalam waktu bersamaan.</li>
+					<li>Lakukan uji coba beban (stress test) menggunakan <code>curl</code> atau <code>ab</code>.</li>
 				</ul>
 			</p>
 		</li>
@@ -272,9 +271,9 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 	<ol start="8">
 		<li>
 			<p align="justify">
-				Selama uji coba, terdeteksi anomali. Setiap paket yang dikirim Vilya menuju Khamul, ternyata dibelokkan oleh sihir hitam menuju IronHills.
+				Selama uji coba, terdeteksi anomali. Setiap paket yang dikirim <b>Vilya</b> menuju <b>Khamul</b>, ternyata dibelokkan oleh sihir hitam menuju <b>IronHills</b>.
 				<ul>
-					<li>Gunakan nc untuk memastikan alur pengalihan ini (Redirect trafik dari Client ke Server).</li>
+					<li>Gunakan <code>nc</code> untuk memastikan alur pengalihan ini (Redirect trafik dari Client ke Server).</li>
 				</ul>
 		</li>
 </blockquote>
