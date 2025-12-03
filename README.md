@@ -501,6 +501,52 @@ ping 192.229.1.230 -c 5
 	</ol>
 </blockquote>
 
+<p align="justify">
+&emsp; Untuk memastikan setiap node dapat terhubung ke <b>WAN</b> tanpa MASQUARADE, mengkonfigurasi terlebih dahulu node <b>Osgilath</b> untuk menambahkan konfigurasi <code>iptables</code>:
+</p>
+
+```sh
+iptables -t nat -A POSTROUTING -o eth0 -j SNAT --to-source 192.168.122.10
+```
+
+<p align="justify">
+&emsp; Di mana command di atas akan mengubah packet yang melewati dan keluar lewat port <code>eth0</code> dari Osgilath menuju WAN akan diubah alamat <i>source</i> menjadi alamat <i>static</i> dari Osgilath pada <code>eth0</code>.
+</p>
+
+<p align="justify">
+&emsp; Selain itu, agar node <i>non-client</i> pada LAN dapat mengakses <i>service</i> seperti <code>google.com</code> atau <code>apt-get</code>, maka kita perlu menambahkan alamat <b><i>nameserver</i></b> sementara yang merujuk ke IP <code>192.168.122.1</code> pada file <code>/etc/resolv.conf</code> untuk setiap node <i>non-client</i> pada LAN:
+</p>
+
+```sh
+echo "nameserver 192.168.122.1" > /etc/resolv.conf
+```
+
+<p align="justify">
+&emsp; Setelah itu, kita perlu memastikan bahwasannya semua node <i>non-client</i> yang berada di LAN dapat mencapai WAN. Hal ini dapat dilakukan dengan menggunakan command <code>ping</code>, di mana langkah implementasinya, menggunakan <b>Narya</b> dan <b>Pelargir</b> sebagai contoh:
+</p>
+
+1. `ping` `8.8.8.8` dan `google.com` dari **Narya**:
+
+```sh
+ping 8.8.8.8 -c 5
+ping google.com -c 5
+```
+
+<p align="center">
+	<img src="img_modul5/image04.png" alt="el goggle" width="80%" height="80%">  
+</p>
+
+2. `ping` `8.8.8.8` dan `google.com` dari **Pelargir**:
+
+```sh
+ping 8.8.8.8 -c 5
+ping google.com -c 5
+```
+
+<p align="center">
+	<img src="img_modul5/image05.png" alt="el gugel" width="80%" height="80%">  
+</p>
+
 #### b. Soal 2
 
 <blockquote>
