@@ -58,27 +58,27 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 - [Daftar Isi](#daftar-isi)
 - [Walkthrough](#walkthrough)
     - [Misi 1: Memetakan Medan Perang](#-misi-1-memetakan-medan-perang)
-        - [Soal 1](#a-soal-1)
-        - [Soal 2](#b-soal-2)
-        - [Soal 3](#c-soal-3)
-        - [Soal 4](#d-soal-4)
+        - [Soal 1 Misi 1](#a-soal-1-misi-1)
+        - [Soal 2 Misi 1](#b-soal-2-misi-1)
+        - [Soal 3 Misi 1](#c-soal-3-misi-1)
+        - [Soal 4 Misi 1](#d-soal-4-misi-1)
     - [Misi 2: Menemukan Jejak Kegelapan (Security Rules)](#-misi-2-menemukan-jejak-kegelapan-security-rules)
-        - [Soal 1](#a-soal-1)
-        - [Soal 2](#b-soal-2)
-        - [Soal 3](#c-soal-3)
-        - [Soal 4](#d-soal-4)
-        - [Soal 5](#e-soal-5)
-        - [Soal 6](#f-soal-6)
-        - [Soal 7](#g-soal-7)
-        - [Soal 8](#h-soal-8)
+        - [Soal 1 Misi 2](#a-soal-1-misi-2)
+        - [Soal 2 Misi 2](#b-soal-2-misi-2)
+        - [Soal 3 Misi 2](#c-soal-3-misi-2)
+        - [Soal 4 Misi 2](#d-soal-4-misi-2)
+        - [Soal 5 Misi 2](#e-soal-5-misi-2)
+        - [Soal 6 Misi 2](#f-soal-6-misi-2)
+        - [Soal 7 Misi 2](#g-soal-7-misi-2)
+        - [Soal 8 Misi 2](#h-soal-8-misi-2)
     - [Misi 3: Isolasi Sang Nazgûl [|||||]](#-misi-3-isolasi-sang-nazgûl-)
-        - [Soal 1](#a-soal-1)
+        - [Soal 1 Misi 3](#a-soal-1-misi-3)
 
 ## Walkthrough
 
 ### • Misi 1: Memetakan Medan Perang
 
-#### a. Soal 1
+#### a. Soal 1 Misi 1
 
 <blockquote>
 	<ol start="1">
@@ -112,7 +112,7 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 	<img src="img_modul5/image01.png" alt="el topo" width="80%" height="80%">  
 </p>
 
-#### b. Soal 2
+#### b. Soal 2 Misi 1
 
 <blockquote>
 	<ol start="2">
@@ -177,7 +177,7 @@ Di mana pembagian _range_ IP pada tabel VLSM, diurutkan berdasarkan **jumlah IP*
   
 </div>
 
-#### c. Soal 3
+#### c. Soal 3 Misi 1
 
 <blockquote>
 	<ol start="3">
@@ -465,7 +465,7 @@ ping 192.229.1.230 -c 5
 	<img src="img_modul5/image03.png" alt="el pongping" width="80%" height="80%">  
 </p>
 
-#### d. Soal 4
+#### d. Soal 4 Misi 1
 
 <blockquote>
 	<ol start="4">
@@ -997,7 +997,7 @@ service nginx restart
 
 ### • Misi 2: Menemukan Jejak Kegelapan (Security Rules)
 
-#### a. Soal 1
+#### a. Soal 1 Misi 2
 
 <blockquote>
 	<ol start="1">
@@ -1058,7 +1058,7 @@ ping google.com -c 5
 	<img src="img_modul5/image05.png" alt="el gugel" width="80%" height="80%">  
 </p>
 
-#### b. Soal 2
+#### b. Soal 2 Misi 2
 
 <blockquote>
 	<ol start="2">
@@ -1073,7 +1073,7 @@ ping google.com -c 5
 	</ol>
 </blockquote>
 
-#### c. Soal 3
+#### c. Soal 3 Misi 2
 
 <blockquote>
 	<ol start="3">
@@ -1140,7 +1140,7 @@ iptables -F
 	<img src="img_modul5/image18.png" alt="el nayar" width="80%" height="80%">  
 </p>
 
-#### d. Soal 4
+#### d. Soal 4 Misi 2
 
 <blockquote>
 	<ol start="4">
@@ -1156,7 +1156,7 @@ iptables -F
 	</ol>
 </blockquote>
 
-#### e. Soal 5
+#### e. Soal 5 Misi 2
 
 <blockquote>
 	<ol start="5">
@@ -1173,7 +1173,7 @@ iptables -F
 	</ol>
 </blockquote>
 
-#### f. Soal 6
+#### f. Soal 6 Misi 2
 
 <blockquote>
 	<ol start="6">
@@ -1190,7 +1190,7 @@ iptables -F
 	</ol>
 </blockquote>
 
-#### g. Soal 7
+#### g. Soal 7 Misi 2
 
 <blockquote>
 	<ol start="7">
@@ -1205,7 +1205,7 @@ iptables -F
 		</li>
 </blockquote>
 
-#### h. Soal 8
+#### h. Soal 8 Misi 2
 
 <blockquote>
 	<ol start="8">
@@ -1220,7 +1220,7 @@ iptables -F
 
 ### • Misi 3: Isolasi Sang Nazgûl [|||||]
 
-#### a. Soal 1
+#### a. Soal 1 Misi 3
 
 <blockquote>
 	<ol start="1">
