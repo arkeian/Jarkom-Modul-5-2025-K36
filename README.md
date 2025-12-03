@@ -104,6 +104,13 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 	</ol>
 </blockquote>
 
+<p align="justify">
+&emsp; Langkah pertama adalah mengidentifikasi perangkat dan melakukan pemetaan topologi jaringannya terlebih dahulu dan menghubungkan link antar node sesuai dengan ketentuan yang ada pada soal di GNS3.
+</p>
+
+<p align="center">
+	<img src="img_modul5/image01.png" alt="el topo" width="80%" height="80%">  
+</p>
 
 #### b. Soal 2
 
@@ -117,6 +124,58 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 	</ol>
 </blockquote>
 
+<p align="justify">
+&emsp; Langkah selanjutnya adalah melakukan <b>subnetting</b> dengan metode <b>VLSM</b> untuk menentukan <i>range</i> IP dari setiap subnet yang ada pada topologi jaringan.
+</p>
+
+Di mana pembagian subnet pada topologinya:
+
+<p align="center">
+	<img src="img_modul5/VLSM_m0dul5v2.PNG" alt="el sirkel" width="80%" height="80%">  
+</p>
+
+<div align="center">
+	
+| Nama Subnet | Rute                                   	| Jumlah IP | Netmask |
+|-------------|-----------------------------------------|-----------|---------|
+| A1          | Osgilath > Moria                        | 2         | /30     |
+| A2          | Osgilath > Rivendell                    | 2         | /30     |
+| A3          | Osgilath > Minastir                     | 2         | /30     |
+| A4          | Moria > Switch2 > IronHills             | 2         | /30     |
+| A5          | Minastir > Pelargir                     | 2         | /30     |
+| A6          | Pelargir > AnduinBanks                  | 2         | /30     |
+| A7          | Moria > Wilderland                      | 2         | /30     |
+| A8          | Minastir > Switch4 > Isildur, Elendil   | 231       | /24     |
+| A9          | Pelargir > Palantir                     | 2         | /30     |
+| A10         | AnduinBanks > Switch5 > Gilgalad, Cirdan| 121       | /25     |
+| A11         | Wilderland > Durin                      | 51        | /26     |
+| A12         | Wilderland > Switch3 > Khamul           | 6         | /29     |
+| A13         | Rivendell > Switch1 > Vilya, Narya      | 3         | /29     |
+|			  | **Total**                               | **428**   | **/23** |
+
+</div>
+
+Di mana pembagian _range_ IP pada tabel VLSM, diurutkan berdasarkan **jumlah IP** setiap subnet:
+
+<div align="center">
+	
+| Subnet | Network ID      | Netmask			| Broadcast        | Range IP                          |
+|--------|------------------|-------------------|------------------|-----------------------------------|
+| A8     | 192.229.0.0      | 255.255.255.0     | 192.229.0.255    | 192.229.0.1 - 192.229.0.254       |
+| A10    | 192.229.1.0      | 255.255.255.128   | 192.229.1.127    | 192.229.1.1 - 192.229.1.126       |
+| A11    | 192.229.1.128    | 255.255.255.192   | 192.229.1.191    | 192.229.1.129 - 192.229.1.190     |
+| A12    | 192.229.1.192    | 255.255.255.248   | 192.229.1.199    | 192.229.1.193 - 192.229.1.198     |
+| A13    | 192.229.1.200    | 255.255.255.248   | 192.229.1.207    | 192.229.1.201 - 192.229.1.206     |
+| A1     | 192.229.1.208    | 255.255.255.252   | 192.229.1.211    | 192.229.1.209 - 192.229.1.210     |
+| A2     | 192.229.1.212    | 255.255.255.252   | 192.229.1.215    | 192.229.1.213 - 192.229.1.214     |
+| A3     | 192.229.1.216    | 255.255.255.252   | 192.229.1.219    | 192.229.1.217 - 192.229.1.218     |
+| A4     | 192.229.1.220    | 255.255.255.252   | 192.229.1.223    | 192.229.1.221 - 192.229.1.222     |
+| A5     | 192.229.1.224    | 255.255.255.252   | 192.229.1.227    | 192.229.1.225 - 192.229.1.226     |
+| A6     | 192.229.1.228    | 255.255.255.252   | 192.229.1.231    | 192.229.1.229 - 192.229.1.230     |
+| A7     | 192.229.1.232    | 255.255.255.252   | 192.229.1.235    | 192.229.1.233 - 192.229.1.234     |
+| A9     | 192.229.1.236    | 255.255.255.252   | 192.229.1.239    | 192.229.1.237 - 192.229.1.238     |
+  
+</div>
 
 #### c. Soal 3
 
@@ -129,6 +188,7 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 		</li>
 	</ol>
 </blockquote>
+
 
 #### d. Soal 4
 
