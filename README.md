@@ -150,9 +150,6 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 	</ol>
 </blockquote>
 
-
----
-
 ### • Misi 2: Menemukan Jejak Kegelapan (Security Rules)
 
 #### a. Soal 1
@@ -283,4 +280,18 @@ Rasulullah Shallallāhu ‘alaihi wa Sallam pernah bersabda:
 		</li>
 </blockquote>
 
+### • Misi 3: Isolasi Sang Nazgûl [|||||]
 
+#### a. Soal 1
+
+<blockquote>
+	<ol start="1">
+		<li>
+			<p align="justify">
+				Penjara Barad-dûr: Mengetahui pengkhianatan Khamul, Aliansi mengambil langkah final: Blokir semua lalu lintas masuk dan keluar dari Khamul.
+				<ul>
+					<li>Gunakan nc dan ping untuk membuktikan Khamul terisolasi total.</li>
+					<li>Penting: Yang diblokir adalah Khamul (5 Host), BUKAN Durin (50 Host). Jangan sampai salah sasaran.</li>
+				</ul>
+		</li>
+</blockquote>
