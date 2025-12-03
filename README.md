@@ -1292,6 +1292,17 @@ ab -n 100 -c 10 http://ironhills.K36.com/
 		</li>
 </blockquote>
 
+<blockquote> <p align="justify"> Setiap paket dari Vilya ke Khamul diarahkan paksa menuju IronHills. Pengujian dilakukan menggunakan <code>nc</code>. </p> </blockquote>
+• Aturan NAT Redirect:
+
+```sh
+iptables -t nat -A PREROUTING -s 192.229.1.194 -d 192.229.1.198 \
+    -p tcp --dport 80 -j DNAT --to-destination 192.229.1.206
+```
+• Pengujian:
+```sh
+nc -vz 192.229.1.198 80
+```
 ### • Misi 3: Isolasi Sang Nazgûl [|||||]
 
 #### a. Soal 1 Misi 3
